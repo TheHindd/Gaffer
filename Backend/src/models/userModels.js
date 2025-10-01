@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     password: {type: String, required: true} ,
     role: {type: String, enum: ['manager', 'admin', 'team_member'], default: 'team_member'},
     mustChangePassword: {type: Boolean, default: true},
-    language: {type: String, enum: ['en', 'ar'], default: 'ar'},
 }, { timestamps: true });
 
 
