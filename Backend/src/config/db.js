@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
     try{
-        await mongoose.connect(`${process.env.MONGODB_URI}/gafferDB`);
+        await mongoose.connect(`${process.env.MONGODB_URI}/gaffer`);
         console.log("Mongodb Connected Succesfully!!");
     }
 
