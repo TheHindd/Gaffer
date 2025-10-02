@@ -2,7 +2,8 @@ import express from "express";
 import dotenv from "dotenv/config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { connectDB } from "./src/config/db.js";
+import { connectDB } from "./src/config/mongodb.js";
+import authRouter from "./src/routes/authRoutes.js";
 
 const app = express();
 const port= process.env.PORT;
@@ -14,10 +15,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({credentials:true}));
 
-app.get("/", (req, res) => {
-  res.send("Hello from backend!");
-});
-
+//API Routes
+app.get("/", (req, res) => {res.send("Hello from backend!");});
+app.use("/api/auth", authRouter);
 
 app.listen(port, () => {
     console.log(`server started on port:${port}`, "http://localhost:5000");
