@@ -17,7 +17,7 @@ app.use(cors({credentials:true}));
 
 //API Routes
 app.get("/", (req, res) => {res.send("Hello from backend!");});
-app.use("/api/auth", authRouter);
+app.use("/api/auth", authRouter)
 
 app.listen(port, () => {
     console.log(`server started on port:${port}`, "http://localhost:5000");
