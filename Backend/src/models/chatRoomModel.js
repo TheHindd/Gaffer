@@ -12,4 +12,4 @@ const chatRoomSchema = new mongoose.Schema({
 // index to fetch rooms a user participates in quickly
 chatRoomSchema.index({ members: 1 });
 
-export default mongoose.model("ChatRoom", chatRoomSchema);
+export default mongoose.model("ChatRoomModel", chatRoomSchema);

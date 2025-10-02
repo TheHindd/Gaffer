@@ -24,4 +24,4 @@ const taskSchema = new mongoose.Schema({
 taskSchema.index({ project: 1, assignee: 1 });
 taskSchema.index({ dueDate: 1 });
 
-export default mongoose.model("Task", taskSchema);
+export default mongoose.model("TaskModel", taskSchema);

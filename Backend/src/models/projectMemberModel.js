@@ -10,4 +10,4 @@ const projectMemberSchema = new mongoose.Schema({
 // ensure uniqueness: a user can only appear once per project
 projectMemberSchema.index({ project: 1, user: 1 }, { unique: true });
 
-export default mongoose.model("ProjectMember", projectMemberSchema);
+export default mongoose.model("ProjectMemberModel", projectMemberSchema);

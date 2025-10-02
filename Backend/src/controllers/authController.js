@@ -1,13 +1,13 @@
-import User from "../models/userModels.js";
+import UserModel from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// ==================== LOGIN ====================
+// LOGIN
 export const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email });
+        const user = await UserModel.findOne({ email });
         if (!user) {
             return res.status(401).json({ message: "Invalid email or password" });
         }
@@ -31,12 +31,12 @@ export const login = async (req, res) => {
     }
 };
 
-// ==================== CHANGE PASSWORD ====================
+// CHANGE PASSWORD
 export const changePassword = async (req, res) => {
     const { userId, newPassword } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(newPassword, 10);
-        const user = await User.findByIdAndUpdate(
+        const user = await UserModel.findByIdAndUpdate(
             userId,
             { password: hashedPassword, mustChangePassword: false },
             { new: true }
@@ -50,14 +50,14 @@ export const changePassword = async (req, res) => {
     }
 };
 
-// ==================== LOGOUT ====================
+// LOGOUT
 export const logout = async (req, res) => {
     // For JWT: client should delete token
     // Optionally store invalidated refresh tokens in DB/Redis
     res.status(200).json({ message: "Logged out successfully" });
 };
 
-// ==================== REFRESH TOKEN ====================
+// REFRESH TOKEN
 export const refreshToken = async (req, res) => {
     const { token } = req.body;
     if (!token) return res.status(401).json({ message: "Refresh token required" });
@@ -75,10 +75,10 @@ export const refreshToken = async (req, res) => {
     }
 };
 
-// ==================== GET CURRENT USER ====================
+// GET CURRENT USER
 export const me = async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select("-password");
+        const user = await UserModel.findById(req.user.id).select("-password");
         if (!user) return res.status(404).json({ message: "User not found" });
         res.status(200).json(user);
     } catch (error) {
@@ -86,11 +86,11 @@ export const me = async (req, res) => {
     }
 };
 
-// ==================== FORGOT PASSWORD ====================
+// FORGOT PASSWORD
 export const forgotPassword = async (req, res) => {
     const { email } = req.body;
     try {
-        const user = await User.findOne({ email });
+        const user = await UserModel.findOne({ email });
         if (!user) return res.status(404).json({ message: "User not found" });
 
         // In real system, generate reset token + email it
@@ -103,14 +103,14 @@ export const forgotPassword = async (req, res) => {
     }
 };
 
-// ==================== RESET PASSWORD ====================
+// RESET PASSWORD
 export const resetPassword = async (req, res) => {
     const { token, newPassword } = req.body;
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-        const user = await User.findByIdAndUpdate(
+        const user = await UserModel.findByIdAndUpdate(
             decoded.id,
             { password: hashedPassword, mustChangePassword: false },
             { new: true }

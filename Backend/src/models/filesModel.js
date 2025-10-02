@@ -19,4 +19,4 @@ const fileSchema = new mongoose.Schema({
 fileSchema.index({ project: 1, task: 1 });
 fileSchema.index({ uploadedBy: 1 });
 
-export default mongoose.model("File", fileSchema);
+export default mongoose.model("FileModel", fileSchema);

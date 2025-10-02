@@ -1,4 +1,4 @@
-import File from "../models/fileModel.js";
+import FileModel from "../models/fileModel.js";
 import fs from "fs";
 import path from "path";
 
@@ -9,7 +9,7 @@ export const uploadFile = async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    const file = new File({
+    const file = new FileModel({
       filename: req.file.originalname,
       filepath: req.file.path, // location on disk (or cloud URL later)
       uploadedBy: req.user.id, // from auth middleware
@@ -32,7 +32,7 @@ export const listFiles = async (req, res) => {
     if (projectId) query.project = projectId;
     if (taskId) query.task = taskId;
 
-    const files = await File.find(query).populate("uploadedBy", "name email");
+    const files = await FileModel.find(query).populate("uploadedBy", "name email");
     res.status(200).json(files);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
@@ -42,7 +42,7 @@ export const listFiles = async (req, res) => {
 // ✅ Download file
 export const downloadFile = async (req, res) => {
   try {
-    const file = await File.findById(req.params.id);
+    const file = await FileModel.findById(req.params.id);
     if (!file) return res.status(404).json({ message: "File not found" });
 
     res.download(path.resolve(file.filepath), file.filename);
@@ -54,7 +54,7 @@ export const downloadFile = async (req, res) => {
 // ✅ Delete file
 export const deleteFile = async (req, res) => {
   try {
-    const file = await File.findById(req.params.id);
+    const file = await FileModel.findById(req.params.id);
     if (!file) return res.status(404).json({ message: "File not found" });
 
     // delete from storage

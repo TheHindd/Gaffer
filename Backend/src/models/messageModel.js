@@ -13,4 +13,4 @@ const messageSchema = new mongoose.Schema({
 // commonly query messages by room and time
 messageSchema.index({ room: 1, createdAt: -1 });
 
-export default mongoose.model("Message", messageSchema);
+export default mongoose.model("MessageModel", messageSchema);
