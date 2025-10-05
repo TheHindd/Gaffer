@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema({
     password: {type: String, required: true} ,
     role: {type: String, enum: ['manager', 'admin', 'team_member'], default: 'team_member'},
     mustChangePassword: {type: Boolean, default: true},
+    resetOtp: {type: String, default: null},
+    resetOtpExpiry: {type: Number , default: null}
 }, { timestamps: true });
 
 
