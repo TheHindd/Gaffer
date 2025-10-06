@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import User from "../models/userModels.js";
+import UserModel from "../models/userModels.js";
 
 export const authenticateMiddle = async (req, res, next) => {
   try {
@@ -16,7 +16,7 @@ export const authenticateMiddle = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // 3. Find the user in the database
-    const user = await User.findById(decoded.id).select("-password");
+    const user = await UserModel.findById(decoded.id).select("-password");
     if (!user) {
       return res.status(401).json({ message: "User not found" });
     }

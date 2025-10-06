@@ -1,7 +1,7 @@
 import UserModel from "../models/userModels.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"; 
-import { transporter } from "../config/email.js";
+import { transporter } from "../config/nodemailer.js";
 
 // LOGIN
 export const login = async (req, res) => {
@@ -115,7 +115,7 @@ export const forgotPassword = async (req, res) => {
     await transporter.sendMail(mailOptions);
     res.status(200).json({ message: "OTP sent to your email" });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 };
 

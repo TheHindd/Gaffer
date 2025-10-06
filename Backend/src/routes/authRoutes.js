@@ -1,15 +1,12 @@
 import express from "express";
-import { changePassword, forgotPassword, login, logout } from "../controllers/authController.js";
-import { createUser } from "../controllers/userController.js";
-
+import { changePassword, forgotPassword, login, logout, resetPassword } from "../controllers/authController.js";
 
 const authRouter = express.Router();
 
-authRouter.post('/register', createUser);
 authRouter.post('/login', login);
 authRouter.post('/logout', logout);
-authRouter.put('/login/changepassword', changePassword);
-authRouter.post('/forgotpassowrd', forgotPassword);
-
+authRouter.post('/resetpassword', resetPassword );
+authRouter.post('/forgotpassword', forgotPassword);
+authRouter.put('/firstloginpasswordreset', changePassword);
 
 export default authRouter;
