@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import ProjectModel from "../models/Project.js";
-import ProjectMemberModel from "../models/ProjectMember.js";
-import ChatRoomModel from "../models/ChatRoom.js";
-import ActivityLogModel from "../models/ActivityLog.js"; // if you have it
-import TaskModel from "../models/Task.js";
-import FileModel from "../models/File.js";
+import ProjectModel from "../models/projectModel.js";
+import ProjectMemberModel from "../models/projectMemberModel.js";
+import ChatRoomModel from "../models/chatRoomModel.js";
+import ActivityLogModel from "../models/activityLogModel.js"; // if you have it
+import TaskModel from "../models/taskModel.js";
+import FileModel from "../models/filesModel.js";
 
 
 

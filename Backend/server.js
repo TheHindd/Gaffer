@@ -9,12 +9,13 @@ import projectRouter from "./src/routes/projectRoutes.js";
 const app = express();
 const port= process.env.PORT;
 connectDB();
+const allowedOrigins=['http://localhost:5173'];
 
 //dotenv.config();
 
 app.use(express.json());
 //app.use(cookieParser());
-app.use(cors({credentials:true}));
+app.use(cors({Origin: allowedOrigins, credentials:true}));
 
 //API Routes
 app.get("/", (req, res) => {res.send("Hello from backend!");});

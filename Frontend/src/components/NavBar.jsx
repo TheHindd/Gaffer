@@ -3,9 +3,19 @@ import { assets } from '../assets/assets'
 
 const NavBar = () => {
   return (
-    <div className='w-full flex justify-between items-center p-3 absoulute top-0 sm:py-6 sm:px-24'>
-      <button className='flex items-center gap-2 gap-2 border border-blue-500 rounded-full px-6 py-2 text-grey hover:bg-blue-100 transition-all'>Login</button>
-      <img src={assets.blueLogo} alt="logo" className='w-15 sm:w-32'/>
+    <div dir='rtl' className='w-full flex justify-between items-center absoulute h-106px py-3 px-3'>
+        <div  className='flex justify-end gap-7 text-orange-400 font-bold cursor-pointer' onClick={()=> window.location.href='/'}>
+          <img src={assets.blueLogo} alt="logo" className='w-16 ml-4'/>
+          <p>الرئيسية</p>
+          <p>من نحن </p>
+          <p>خدماتنا</p>
+          <p>أعمالنا </p>
+          <p>تواصل معنا</p>
+        </div>
+        <div>
+
+        <button className='flex items-center bg-blue-800 rounded-xl px-3 py-2 text-white text-sm hover:bg-blue-500 transition-all'>تسجيل الدخول</button>
+        </div>
     </div>
   )
 }

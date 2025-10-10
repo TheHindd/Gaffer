@@ -23,6 +23,8 @@ export const login = async (req, res) => {
         const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_REFRESH_SECRET, { expiresIn: "7d" });
 
         res.status(200).json({
+            success: true,
+            message: "Login successful",
             accessToken,
             refreshToken,
             user: { id: user._id, email: user.email, role: user.role }
