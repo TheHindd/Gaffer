@@ -34,7 +34,7 @@ const Login = () => {
   }
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-50 to-white" /*style={{backgroundColor: '#F4F7FE'}}*/ >
+      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-violet-50 to-white" /*style={{backgroundColor: '#F4F7FE'}}*/ >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="black" class="size-7 absolute center bottom-8 cursor-pointer" onClick={()=> navigate('/')}>
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
         </svg>  
