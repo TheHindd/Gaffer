@@ -13,3 +13,11 @@
   animation: fadeInUp 0.6s ease forwards;
 }
 
+:root {
+  --primary1-color: #2C459C; 
+  --primary2-color: #EF4B29; 
+  --secondary1-color: #F0706C;
+  --secondary2-color: #1CB1B1; 
+  --background-color: #F4F7FE;  
+  --border-color: #E5E7EB; 
+}
