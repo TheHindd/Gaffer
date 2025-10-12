@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { useContext , useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+
 const Login = () => {
 
    const { t, i18n } = useTranslation();
@@ -18,7 +19,7 @@ const Login = () => {
   };
   const navigate = useNavigate();
 
-  const { backendUrl, setIsLoggedin } = useContext(AppContext);
+  const { backendUrl, setIsLoggedin , getuserData} = useContext(AppContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +30,7 @@ const Login = () => {
 
       const{data}= await axios.post(backendUrl + '/api/auth/login' , {email, password})
       if(data.success){
+        localStorage.setItem("token", data.accessToken); // ✅ Save token
         setIsLoggedin(true)
         navigate('/Dashboard')
       }
