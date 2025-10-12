@@ -8,8 +8,9 @@ import projectRouter from "./src/routes/projectRoutes.js";
 
 const app = express();
 const port= process.env.PORT;
+const allowedOrigins= process.env.CLIENT_URL;
 connectDB();
-const allowedOrigins=['http://localhost:5173'];
+
 
 //dotenv.config();
 

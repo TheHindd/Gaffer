@@ -2,6 +2,7 @@ import UserModel from "../models/userModels.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"; 
 import { transporter } from "../config/nodemailer.js";
+import e from "express";
 
 // LOGIN
 export const login = async (req, res) => {
@@ -85,13 +86,21 @@ export const refreshToken = async (req, res) => {
 };
 
 // GET CURRENT USER
-export const me = async (req, res) => {
+export const getuserData = async (req, res) => {
     try {
-        const user = await UserModel.findById(req.user.id).select("-password");
+    
+        const user = await UserModel.findById(req.user).select("-password");
         if (!user) return res.status(404).json({ message: "User not found" });
-        res.status(200).json(user);
+        res.json({
+          success: true,
+          userData:{
+             name: user.name,
+             email: user.email,
+             role: user.role,
+
+          }});
     } catch (error) {
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({message: error.message});
     }
 };
 
