@@ -45,6 +45,13 @@ const Login = () => {
   return (
     <div>
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-50 to-white" /*style={{backgroundColor: '#F4F7FE'}}*/ >
+        <div className="flex flex-col items-center">
+      <button 
+        onClick={toggleLanguage} 
+        className="absolute top-4 right-4 bg-gray-200 px-2 py-1 rounded"
+      >
+        {i18n.language === "en" ? "AR" : "EN"}
+      </button> </div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="black" class="size-7 absolute center bottom-8 cursor-pointer" onClick={()=> navigate('/')}>
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
         </svg>  
@@ -55,7 +62,7 @@ const Login = () => {
         {/* Form Section */}
         <div className="flex flex-col justify-center p-8 w-2/5">
             <div className='flex justify-center'> <img src={assets.blueLogo} alt="icon" className=' w-20 mb-4'/> </div>
-          <h2 className="text-2xl font-bold mb-6 text-center" style={{color:'#F0706C'}}> Welcome Back</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center" style={{color:'#F0706C'}}> {t("welcome")}</h2>
           <form onSubmit={onSubmitHandler}>
             <div className="flex items-center mb-4 border-b border-stone-200">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="grey" className="size-4">
@@ -65,7 +72,7 @@ const Login = () => {
                   value={email}
                   name= "email"
                   type="text" required
-                  placeholder="Email"
+                  placeholder={t("email")}
                   className="text-sm w-full px-4 py-2 focus:outline-none"
                   />
               </div>
@@ -77,21 +84,21 @@ const Login = () => {
                   value={password}
                   name="password"
                   type="password" required
-                  placeholder="Password"
+                  placeholder={t("password")}
                   autoComplete="off"
                   className="text-sm w-full px-4 py-2 focus:outline-none"
                   />
               </div>
             <div className="flex items-center mb-4">
               <input type="checkbox" id="remember" className="mr-2" />
-              <label htmlFor="remember" className="text-sm">Remember me</label>
+              <label htmlFor="remember" className="text-sm">{t("rememberMe")}</label>
             </div>
             <button type="submit" className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-500 mb-4">
-              Log in
+              {t("login")}
             </button>
           </form>
           <div className="flex justify-center text-sm text-blue-700 mt-2">
-            <a href="/ResetPassword" className="underline cursor-pointer">forgot password?</a>
+            <a href="/ResetPassword" className="underline cursor-pointer">{t("forgotPassword")}</a>
           </div>
          </div>
       </div>

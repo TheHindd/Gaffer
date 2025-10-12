@@ -21,3 +21,12 @@
   --background-color: #F4F7FE;  
   --border-color: #E5E7EB; 
 }
+
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}

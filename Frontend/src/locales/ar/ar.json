@@ -1,10 +1,10 @@
 {
-  "welcome": "مرحباً بعودتك",
+  "welcome": "مرحبـاً بعودتك !",
   "login": "تسجيل الدخول",
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
   "rememberMe": "تذكرني",
-  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "forgotPassword": " نسيت كلمة المرور؟",
   "dashboard": "لوحة التحكم",
   "projects": "المشاريع"
 }
