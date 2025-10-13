@@ -6,20 +6,33 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-*{  font-family: "Rubik", Arial-rounded;}
+@layer base{ 
+  html {
+    font-family: var(--font-display);
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* Adjust based on your fixed header height */
+   
+  }
 
+  body{
+    background-color: var(--color-background);
+    overflow-x: hidden;
+  }
+}
 
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease forwards;
 }
 
 :root {
-  --primary1-color: #2C459C; 
-  --primary2-color: #EF4B29; 
-  --secondary1-color: #F0706C;
-  --secondary2-color: #1CB1B1; 
-  --background-color: #F4F7FE;  
-  --border-color: #E5E7EB; 
+  --font-body: "Tajawal", "Arial-rounded";
+  --font-display: "Rubik", "Arial-rounded";
+  --color-primary1: #2C459C ;
+  --color-primary2: #EF4B29 ; 
+  --color-secondary1: #F0706C ;
+  --color-secondary2: #1CB1B1 ;
+  --color-background: #F4F7FE ; 
+  --border-color: #E5E7EB ;
 }
 
 html[dir="rtl"] {
