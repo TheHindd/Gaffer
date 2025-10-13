@@ -21,6 +21,7 @@ const taskSchema = new mongoose.Schema({
     enum: ["low", "medium", "high", "urgent"],
     default: "medium"
   },
+  attachments: [{ type: String }], // array of file URLs or paths
   dueDate: { type: Date },
   weight: { type: Number, default: 0 }, // optional for weighted progress
   // simple audit
