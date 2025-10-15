@@ -6,11 +6,11 @@ const fileSchema = new mongoose.Schema({
   storagePath: { type: String, required: true },
   mimeType: { type: String, required: true },
   sizeBytes: { type: Number, required: true },
-  uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel", required: true },
 
   // Link to project (required) and optional to a task (if file belongs to a task)
-  project: { type: mongoose.Schema.Types.ObjectId, ref: "Project", required: true },
-  task: { type: mongoose.Schema.Types.ObjectId, ref: "Task", default: null },
+  project: { type: mongoose.Schema.Types.ObjectId, ref: "ProjectModel", required: true },
+  task: { type: mongoose.Schema.Types.ObjectId, ref: "TaskModel", default: null },
 
   // optional: flag if uploaded via chat (and message id stored on Message.attachments)
   uploadedAt: { type: Date, default: Date.now }

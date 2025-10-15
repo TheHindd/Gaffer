@@ -1,35 +1,22 @@
 import mongoose from "mongoose";
-
-const todoschema = new mongoose.Schema({
-  title: { type: String, required: true },
-  completed: { type: Boolean, default: false }
-});
-
-
-const taskSchema = new mongoose.Schema({
-  project: { type: mongoose.Schema.Types.ObjectId, ref: "ProjectModel", required: true },
+const TaskSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   description: { type: String, default: "" },
-  assignee: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" }, // nullable until assigned
-  status: {
-    type: String,
-    enum: ["todo", "in_progress", "done"],
-    default: "todo"
-  },
-  priority: {
-    type: String,
-    enum: ["low", "medium", "high", "urgent"],
-    default: "medium"
-  },
-  attachments: [{ type: String }], // array of file URLs or paths
+  project: { type: mongoose.Schema.Types.ObjectId, ref: "ProjectModel", default: null }, // null => personal note
+  assignee: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel", required: false },
+  priority: { type: String, enum: ["low", "medium", "high"], default: "medium" },
+  status: { type: String, enum: ["todo", "in_progress", "done"], default: "todo" },
   dueDate: { type: Date },
-  weight: { type: Number, default: 0 }, // optional for weighted progress
-  // simple audit
-  todoChecklist: [todoschema],
+  weight: { type: Number, default: 1 }, // for weighted progress calc
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel", required: true },
+  isPersonal: { type: Boolean, default: false }, // optional explicit flag
+  reviewStatus: { type: String, enum: ['pending', 'accepted', 'rejected', null],default: null},
+  reviewedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' },
+  reviewedAt: Date,
+  reviewNotes: String
 }, { timestamps: true });
-
-taskSchema.index({ project: 1, assignee: 1 });
-taskSchema.index({ dueDate: 1 });
-
-export default mongoose.model("TaskModel", taskSchema);
+  // Helpful indexes for dashboard and queries
+  TaskSchema.index({ assignee: 1, dueDate: 1 });
+  TaskSchema.index({ project: 1, status: 1 });
+  TaskSchema.index({ dueDate: 1 });
+  export default mongoose.model("TaskModel", TaskSchema);
