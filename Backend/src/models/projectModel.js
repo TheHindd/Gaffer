@@ -8,6 +8,7 @@ const projectSchema = new mongoose.Schema({
     enum: ["active", "completed", "archived"],
     default: "active"
   },
+  assistants: [  {    type: mongoose.Schema.Types.ObjectId,    ref: "User",  },],
   startDate: { type: Date },
   endDate: { type: Date },
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false },
@@ -17,5 +18,6 @@ const projectSchema = new mongoose.Schema({
 
 projectSchema.index({ createdBy: 1 });
 projectSchema.index({ status: 1 });
+projectSchema.index({ title: 1 }, { unique: true });
 
 export default mongoose.model("ProjectModel", projectSchema);
