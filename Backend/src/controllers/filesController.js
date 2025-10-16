@@ -11,7 +11,9 @@ export const uploadFile = async (req, res) => {
 
     const file = new FileModel({
       filename: req.file.originalname,
-      filepath: req.file.path, // location on disk (or cloud URL later)
+      storagePath: req.file.path, // ✅
+      mimeType: req.file.mimetype, // ✅ Add this
+      sizeBytes: req.file.size, 
       uploadedBy: req.user.id, // from auth middleware
       project: req.body.projectId || null,
       task: req.body.taskId || null,
