@@ -5,23 +5,46 @@ import {
   getProjectDetails,
   updateProject,
   archiveProject,
+  deleteProject,
   getDashboard,
-  grantAssistantAccess
+  addTeamMember,
+  grantAssistantAccess,
+  revokeAssistantAccess
 } from "../controllers/projectController.js";
-
 import { authenticateMiddle, authorizeRoles } from "../middleware/authMiddle.js";
 
-const ProjectRouter = express.Router();
+const projectRouter = express.Router();
 
-// Projects
-ProjectRouter.post("/", authenticateMiddle, authorizeRoles("admin", "manager"), createProject); // managers & admins create projects
-ProjectRouter.get("/", authenticateMiddle, getProjectsForUser); // returns projects for user (or all for admin)
-ProjectRouter.get("/dashboard", authenticateMiddle, getDashboard); // user's dashboard
-ProjectRouter.get("/:projectId/details", authenticateMiddle, getProjectDetails);
-ProjectRouter.patch("/:projectId", authenticateMiddle, authorizeRoles("admin", "manager"), updateProject);
-ProjectRouter.post("/:projectId/archive", authenticateMiddle, authorizeRoles("admin", "manager"), archiveProject);
+// GET dashboard (upcoming tasks, personal notes, recent projects)
+projectRouter.get("/dashboard", authenticateMiddle, getDashboard);
 
-// Grant assistant (only project owner/manager can call — controller checks ownership)
-ProjectRouter.post("/grant-access", authenticateMiddle, authorizeRoles("admin", "manager"), grantAssistantAccess);
+// CREATE project (Manager/Admin only)
+projectRouter.post( "/", authenticateMiddle,  authorizeRoles("manager", "admin"), createProject);
+projectRouter.get("/", authenticateMiddle, getProjectsForUser);
+projectRouter.get("/:projectId", authenticateMiddle, getProjectDetails);
+projectRouter.patch("/:projectId",authenticateMiddle, authorizeRoles("manager", "admin"), updateProject);
+projectRouter.put("/:projectId/archive", authenticateMiddle, authorizeRoles("manager", "admin"), archiveProject);
+projectRouter.delete( "/:projectId", authenticateMiddle, authorizeRoles("admin , manager"), deleteProject);
 
-export default ProjectRouter;
+// TEAM MEMBER MANAGEMENT ENDPOINTS
+projectRouter.post("/:projectId/members",
+  authenticateMiddle,
+  authorizeRoles("manager", "admin"),
+  addTeamMember
+);
+
+projectRouter.post(
+  "/:projectId/grant-assistant",
+  authenticateMiddle,
+  authorizeRoles("manager", "admin"),
+  grantAssistantAccess
+);
+
+projectRouter.post(
+  "/:projectId/revoke-assistant",
+  authenticateMiddle,
+  authorizeRoles("manager", "admin"),
+  revokeAssistantAccess
+);
+
+export default projectRouter;
