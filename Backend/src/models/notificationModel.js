@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export const notificationSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel', required: true },
     type: { 
         type: String, 
         enum: [
@@ -19,9 +19,9 @@ export const notificationSchema = new mongoose.Schema({
     read: { type: Boolean, default: false },
     
     // Links to related entities
-    project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project' },
-    task: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' },
-    chatRoom: { type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom' },
+    project: { type: mongoose.Schema.Types.ObjectId, ref: 'ProjectModel' },
+    task: { type: mongoose.Schema.Types.ObjectId, ref: 'TaskModel' },
+    chatRoom: { type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoomModel' },
     
     // Optional metadata
     metadata: { type: mongoose.Schema.Types.Mixed }

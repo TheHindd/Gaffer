@@ -10,7 +10,7 @@ const TaskSchema = new mongoose.Schema({
   weight: { type: Number, default: 1 }, // for weighted progress calc
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel", required: true },
   isPersonal: { type: Boolean, default: false }, // optional explicit flag
-  reviewStatus: { type: String, enum: ['pending', 'accepted', 'rejected', null],default: null},
+  reviewStatus: { type: String, enum: ['pending', 'accepted', 'rejected'],default: 'pending' },
   reviewedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' },
   reviewedAt: Date,
   reviewNotes: String

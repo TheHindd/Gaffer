@@ -24,7 +24,7 @@ projectRouter.get("/", authenticateMiddle, getProjectsForUser);
 projectRouter.get("/:projectId", authenticateMiddle, getProjectDetails);
 projectRouter.patch("/:projectId",authenticateMiddle, authorizeRoles("manager", "admin"), updateProject);
 projectRouter.put("/:projectId/archive", authenticateMiddle, authorizeRoles("manager", "admin"), archiveProject);
-projectRouter.delete( "/:projectId", authenticateMiddle, authorizeRoles("admin , manager"), deleteProject);
+projectRouter.delete( "/:projectId", authenticateMiddle, authorizeRoles ("manager", "admin") , deleteProject);
 
 // TEAM MEMBER MANAGEMENT ENDPOINTS
 projectRouter.post("/:projectId/members",

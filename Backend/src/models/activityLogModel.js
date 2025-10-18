@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const ActivityLogSchema = new mongoose.Schema({
-    project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project', required: true }, // ✅ Add this
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    project: { type: mongoose.Schema.Types.ObjectId, ref: 'ProjectModel', required: true }, // ✅ Add this
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel', required: true },
     action: { 
         type: String, 
         enum: [
