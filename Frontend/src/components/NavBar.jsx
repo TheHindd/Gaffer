@@ -1,35 +1,19 @@
 import React from 'react'
-import { assets } from '../assets/assets'
-import { useTranslation } from 'react-i18next';
 
 const NavBar = () => {
-  const { t, i18n } = useTranslation();
-
-  const toggleLanguage = () => {
-    const newLang = i18n.language === "en" ? "ar" : "en";
-    i18n.changeLanguage(newLang);
-    document.dir = newLang === "ar" ? "rtl" : "ltr"; // 👈 set text direction
-  };
   return (
-    <div className='w-full flex justify-between items-center absoulute h-106px py-3 px-3'>
-        <div  className='flex justify-end gap-7 text-orange-400 font-bold cursor-pointer' onClick={()=> window.location.href='/'}>
-          <img src={assets.blueLogo} alt="logo" className='w-16 ml-4'/>
-          <p>الرئيسية</p>
-          <p>من نحن </p>
-          <p>خدماتنا</p>
-          <p>أعمالنا </p>
-          <p>تواصل معنا</p>
-        </div>
-        
-  <div className="flex flex-col items-center">
-      <button 
-        onClick={toggleLanguage} 
-        className="bg-gray-200 rounded">
-        {i18n.language === "en" ? "AR" : "EN"}
-      </button>
-      <button className='flex items-center bg-blue-800 rounded-xl px-3 py-2 text-white text-sm hover:bg-blue-500 transition-all'>تسجيل الدخول</button>
-      </div>
-        
+    <div className='flex flex-row justify-end bg-white w-full border-1 border-white border-b-gray-200 py-3 fixed top-0 z-0 '>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 w-6 text-primary1 mt-2 mr-4 cursor-pointer hover:text-primary1 transition-all">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 w-6 text-primary1 mt-2 mr-4 cursor-pointer hover:text-primary1 transition-all" >
+         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+
+
+      
     </div>
   )
 }

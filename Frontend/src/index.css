@@ -24,7 +24,7 @@
   animation: fadeInUp 0.6s ease forwards;
 }
 
-:root {
+@theme {
   --font-body: "Tajawal", "Arial-rounded";
   --font-display: "Rubik", "Arial-rounded";
   --color-primary1: #2C459C ;

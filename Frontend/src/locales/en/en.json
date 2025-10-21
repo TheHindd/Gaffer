@@ -6,5 +6,10 @@
   "rememberMe": "Remember me",
   "forgotPassword": "Forgot password?",
   "dashboard": "Dashboard",
-  "projects": "Projects"
+  "projects": "Projects",
+  "Home": "Home",
+  "AboutUs": "About Us",
+  "OurServices": "Our Services",
+  "OurWork": "Our Work",  
+  "ContactUs": "Contact Us" 
 }

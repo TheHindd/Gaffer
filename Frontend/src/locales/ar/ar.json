@@ -6,5 +6,10 @@
   "rememberMe": "تذكرني",
   "forgotPassword": " نسيت كلمة المرور؟",
   "dashboard": "لوحة التحكم",
-  "projects": "المشاريع"
+  "projects": "المشاريع",
+  "Home": "الرئيسية",
+  "AboutUs": "من نحن",
+  "OurServices": "خدماتنا",
+  "OurWork": "أعمالنا",  
+  "ContactUs": "تواصل معنا"
 }
