@@ -9,14 +9,16 @@ import { useTranslation } from 'react-i18next'
 
 
 const Login = () => {
+ 
 
-   const { t, i18n } = useTranslation();
+  const {t, i18n } = useTranslation();
+  
+    const toggleLanguage = () => {
+      const newLang = i18n.language === "en" ? "ar" : "en";
+      i18n.changeLanguage(newLang);
+      localStorage.setItem("lang", newLang); // optional, to persist
+    };
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === "en" ? "ar" : "en";
-    i18n.changeLanguage(newLang);
-    document.dir = newLang === "ar" ? "rtl" : "ltr"; // 👈 set text direction
-  };
   const navigate = useNavigate();
 
   const { backendUrl, setIsLoggedin , getuserData} = useContext(AppContext);

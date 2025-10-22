@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const SideBar = () => {
   return (
-    <div className='fixed flex flex-col justify-start bg-white h-full px-3 shadow-lg z-1 left-0'> 
+    <div className='flex fixed flex-col justify-start bg-white min-h-screen px-3 shadow-lg start-0 border-e border-gray-200'> 
        <div className='w-10 my-6 flex justify-center'>
          <img src={assets.blueLogo} alt="logo" />
        </div>

@@ -1,5 +1,5 @@
 {
-  "welcome": "مرحبـاً بعودتك !",
+  "welcome": "مرحبـاً بعودتك ",
   "login": "تسجيل الدخول",
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
@@ -7,9 +7,19 @@
   "forgotPassword": " نسيت كلمة المرور؟",
   "dashboard": "لوحة التحكم",
   "projects": "المشاريع",
+ 
   "Home": "الرئيسية",
   "AboutUs": "من نحن",
   "OurServices": "خدماتنا",
   "OurWork": "أعمالنا",  
-  "ContactUs": "تواصل معنا"
+  "ContactUs": "تواصل معنا",
+
+  "HomePage": "الرئيسية",
+  "Calendar": "التقويم",
+  "UpcomingTasks":"المهام القادمة",
+  "RecentProjects": "المشاريع الحالية",
+  "Notes":"ملاحظات شحصية",
+  "Progress":"نسبة التقدم",
+  "News": "الأخبار"
+
 }

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import ResetPassword from './pages/ResetPassword'
 import { ToastContainer, toast } from 'react-toastify';
 import Dashboard from './pages/Dashboard'
+import { useTranslation } from 'react-i18next'
 // import adminDashboard from './pages/Admin/adminDashboard'
 // import managerDashboard from './pages/Manager/managerDashboard'
 // import ManageUsers from './pages/Admin/ManageUsers'
@@ -14,6 +15,14 @@ import Dashboard from './pages/Dashboard'
 //import Privateroute from './components/Privateroute'
 
 const App = () => {
+
+      const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+    document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
+
   return (
     <div>
       <ToastContainer />

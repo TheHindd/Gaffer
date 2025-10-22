@@ -1,5 +1,5 @@
 {
-  "welcome": "Welcome Back!",
+  "welcome": "Welcome Back",
   "login": "Log in",
   "email": "Email",
   "password": "Password",
@@ -7,9 +7,19 @@
   "forgotPassword": "Forgot password?",
   "dashboard": "Dashboard",
   "projects": "Projects",
+  
   "Home": "Home",
   "AboutUs": "About Us",
   "OurServices": "Our Services",
   "OurWork": "Our Work",  
-  "ContactUs": "Contact Us" 
+  "ContactUs": "Contact Us" ,
+  
+  "HomePage": "Home Page",
+  "Calendar": "Calendar",
+  "UpcomingTasks":"Upcoming Tasks ",
+  "RecentProjects": "Recent Projects",
+  "Notes":"Personal Notes",
+  "Progress":"Progress",
+  "News": "News"
+  
 }
