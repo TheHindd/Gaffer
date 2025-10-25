@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react'
 import { Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
-import Login from './pages/Login'
+import LoginPage from './pages/LoginPage'
 import ResetPassword from './pages/ResetPassword'
 import { ToastContainer, toast } from 'react-toastify';
-import Dashboard from './pages/Dashboard'
+import DashboardPage from './pages/DashboardPage'
 import { useTranslation } from 'react-i18next'
+import CalendarPage from './pages/CalendarPage'
 // import adminDashboard from './pages/Admin/adminDashboard'
 // import managerDashboard from './pages/Manager/managerDashboard'
 // import ManageUsers from './pages/Admin/ManageUsers'
@@ -29,9 +30,10 @@ const App = () => {
       <Routes>
         {/* Team member Routes */}
         <Route path='/' element={<LandingPage/>} />
-        <Route path='/login' element={<Login/>} />
+        <Route path='/login' element={<LoginPage/>} />
         <Route path='/reset-password' element={<ResetPassword/>} />
-        <Route path='/Dashboard' element={<Dashboard/>} />
+        <Route path='/Dashboard' element={<DashboardPage/>} />
+        <Route path='/CalendarPage' element={<CalendarPage/>} />
 
         {/* Admin Routes */}
         {/* <Route element={<Privateroute allowedRoles={"admin"}/>}>
