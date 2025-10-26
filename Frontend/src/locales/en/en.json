@@ -20,6 +20,11 @@
   "RecentProjects": "Recent Projects",
   "Notes":"Personal Notes",
   "Progress":"Progress",
-  "News": "News"
+  "News": "News",
   
+  "ToDo":"To Do", 
+  "InProg":"In Progress",
+  "Done": "Done",
+  "Activity":" Activity Log",
+  "Upcomingdead":" Upcoming Deadlines"
 }

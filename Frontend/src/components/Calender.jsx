@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 const pad = (n) => (n < 10 ? `0${n}` : `${n}`);
 
-export default function CalendarCard({ height = "h-72" }) {
+export default function CalendarCard({ height = "h-55" }) {
   const { i18n } = useTranslation();
   const lang = (i18n.language || "en").toLowerCase();
   const isRTL = lang.startsWith("ar");
@@ -24,7 +24,7 @@ export default function CalendarCard({ height = "h-72" }) {
 
   // weekday names localized and rotated to weekStartsOn
   const weekdayNames = useMemo(() => {
-    const locale = isRTL ? "ar-EG" : "en-US";
+    const locale = isRTL ? "ar-AE" : "en-US";
     // base Sunday
     const base = new Date(Date.UTC(2021, 0, 3)); // Sunday
     const names = [];
@@ -113,7 +113,7 @@ export default function CalendarCard({ height = "h-72" }) {
           <button
             onClick={prev}
             aria-label="Previous month"
-            className="h-8 w-8 flex items-center justify-center rounded hover:bg-gray-100"
+            className="h-6 w-6 flex items-center justify-center rounded hover:bg-gray-100"
           >
             {/* arrow direction flips visually for RTL */}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -126,7 +126,7 @@ export default function CalendarCard({ height = "h-72" }) {
            
           </button>
 
-          <div className="text-center text-sm font-semibold text-secondary1 px-2">
+          <div className="text-center text-xs font-semibold text-secondary1 px-2">
             {monthLabel}
           </div>
 
@@ -158,7 +158,7 @@ export default function CalendarCard({ height = "h-72" }) {
       </div>
 
       {/* dates grid: always 6 rows (42 cells) so height is consistent */}
-      <div className="grid grid-cols-7 gap-y-1 gap-x-1 flex-1">
+      <div className="grid grid-cols-7 gap-x-2 flex">
         {cells.map((cell, i) => {
           const isToday =
             cell.inMonth &&
@@ -166,18 +166,18 @@ export default function CalendarCard({ height = "h-72" }) {
             cell.m === today.month &&
             cell.d === today.date;
           return (
-            <div key={i} className="min-h-[36px] flex items-start justify-center">
+            <div key={i} className="min-h-[30px] flex items-start justify-center">
               {cell.inMonth ? (
                 <div
-                  className={`h-9 w-9 flex items-center justify-center rounded-md text-sm ${
+                  className={`h-7 w-7 flex items-center justify-center rounded-md text-sm ${
                     isToday
                       ? "bg-blue-600 text-white font-semibold"
                       : "text-primary1"
                   }`}
                 >
                   {isRTL
-                    ? new Intl.NumberFormat("ar-EG").format(cell.d)
-                    : cell.d}
+                  ? new Intl.NumberFormat("ar-EG").format(cell.d)
+                  : cell.d}
                 </div>
               ) : (
                 <div className="h-1 w- flex items-center justify-center rounded-md text-xs text-gray-200">

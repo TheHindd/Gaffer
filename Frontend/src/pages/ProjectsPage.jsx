@@ -1,201 +1,194 @@
 import React, { useContext, useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import NavBar from "../components/NavBar";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { AppContext } from '../context/AppContext';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import CalendarCard from "../components/Calender"; // keep your existing path
 import { useTranslation } from 'react-i18next';
-import "react-day-picker/style.css";
-import { DayPicker } from "react-day-picker";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const Dashboard = () => {
+const ProjectsPage = () => {
   const { userData, getuserData } = useContext(AppContext);
-  const [selected, setSelected] = useState(new Date());
+  const { projectId } = useParams(); // Get projectId from URL
+  const { backendUrl, token } = useContext(AppContext);
+  
+  const [loading, setLoading] = useState(true);
+  const [projectData, setProjectData] = useState(null);
+  const { t, i18n } = useTranslation();
+
+  const navigate = useNavigate();
   
   useEffect(() => {
-    getuserData();
-  }, []);
-
-  const { t, i18n } = useTranslation();
+    fetchProjectDetails();
+  }, [projectId]);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "ar" : "en";
     i18n.changeLanguage(newLang);
-    document.dir = newLang === "ar" ? "rtl" : "ltr";
+    localStorage.setItem("lang", newLang); // optional, to persist
   };
 
-  const navigate = useNavigate();
+   const fetchProjectDetails = async () => {
+    try {
+      setLoading(true);
+      
+      const { data } = await axios.get(
+        `${backendUrl}/api/projects/${projectId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+
+      if (data.success) {
+        setProjectData(data);
+      }
+      
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching project:", error);
+      toast.error(error.response?.data?.message || "Failed to load project");
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!projectData) {
+    return <div>Project not found</div>;
+  }
 
   return (
     <div className="flex min-h-screen bg-background">
-      
       <aside className="fixed top-0 left-0 h-full">
         <SideBar />
       </aside>
-  
-      <div 
+
+      <div
         className="flex-1 flex flex-col"
         style={{
-          marginInlineStart: "4rem",
+          marginInlineStart: "4rem", // logical property -> auto flips with dir
         }}
       >
         <NavBar />
 
-        <main className="flex-1 p-6 ml-3">
-          
-          {/* Page Title */}
-          <div className="mb-6">
-            <h1 className="text-2xl font-bold text-secondary1">{t("HomePage")}</h1>
-          </div>
+        <main className="flex-1 p-6 ml-2">
 
-          {/* Main Grid - 4 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-primary1 auto-rows-fr">
-
-            {/* ROW 1 */}
-            
-            {/* Welcome Card - 1 column */}
-            <div className="bg-white p-6 rounded-2xl shadow flex items-center">
-              <h2 className="text-base font-semibold">
-                {t("welcome")}, {userData ? userData.name : "Loading..."}! 👋
-              </h2>
+           <div className="flex md:col-span-full p-3 lg:col-span-full mb-3 font-serif">
+              <h1 className="text-xl font-bold text-secondary1">{t("projects")}</h1>
             </div>
-
-            {/* Upcoming Tasks - 2 columns */}
-            <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="font-semibold">{t("UpcomingTasks")}</h2>
-                <button className="text-orange-500 hover:text-orange-600">
-                  ✏️
-                </button>
-              </div>
-              
-              {/* Task List */}
-              <div className="space-y-3">
+          {/* NOTE: the important change is the arbitrary selector on this grid:
+              [&>*]:max-h-[260px] => applies a max-height to all direct children (cards)
+              [&>*]:overflow-y-auto => makes each card scroll internally when content overflows
+              Adjust max-h value to taste (h-64 / h-72 etc). */}
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-5 lg:grid-cols-9 text-primary1 text-sm font-serif items-start [&>*]:max-h-[400px]">
+            {/* kanban cards */}
+            <div className="bg-white p-4 rounded-2xl shadow col-span-3 h-full  overflow-y-auto ">
+              <h2 className="mb-2 text-md font-semibold text-gray-600">{t("ToDo")}</h2>
+              <div className="space-y-3 mt-3 text-sm text-black">
                 <div className="flex items-center gap-3">
                   <input type="checkbox" className="w-4 h-4" />
-                  <span className="flex-1 text-sm">create the poster for xyz company</span>
-                  <span className="text-red-500 text-lg">🚩</span>
+                  <span className="flex-1">create the poster for xyz company</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <input type="checkbox" className="w-4 h-4" />
-                  <span className="flex-1 text-sm">add fulan to the project</span>
-                  <span className="text-red-500 text-lg">🚩</span>
+                  <span className="flex-1">Task 1</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <input type="checkbox" className="w-4 h-4" />
-                  <span className="flex-1 text-sm">finish the xyz plan</span>
-                  <span className="text-red-500 text-lg">🚩</span>
+                  <span className="flex-1">Task 2</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 3</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 4</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 5</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 6</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 7</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 8</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 9</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 10</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">Task 11</span>
                 </div>
               </div>
             </div>
 
-            {/* Calendar - 1 column, spans 3 rows */}
-            <div className="lg:row-span-3 bg-white p-4 rounded-2xl shadow">
-              <h2 className="font-semibold mb-2 text-sm">{t("Calendar")}</h2>
-              <DayPicker
-                mode="single"
-                selected={selected}
-                onSelect={setSelected}
-                showOutsideDays
-                today={new Date()}
-                classNames={{
-                  root: "text-sm",
-                  months: "flex flex-col",
-                  month: "space-y-2",
-                  caption: "flex justify-center relative items-center mb-2",
-                  caption_label: "text-sm font-medium",
-                  nav: "space-x-1 flex items-center",
-                  nav_button: "h-6 w-6 bg-transparent p-0 opacity-50 hover:opacity-100",
-                  nav_button_previous: "absolute left-0",
-                  nav_button_next: "absolute right-0",
-                  table: "w-full border-collapse",
-                  head_row: "flex",
-                  head_cell: "text-gray-500 rounded-md w-8 font-normal text-xs",
-                  row: "flex w-full mt-1",
-                  cell: "text-center text-xs p-0 relative",
-                  day: "h-8 w-8 p-0 font-normal hover:bg-blue-50 rounded-md flex items-center justify-center cursor-pointer",
-                  day_selected: "bg-blue-600 text-white hover:bg-blue-700 rounded-md",
-                  day_today: "bg-blue-600 text-white font-bold rounded-md",
-                  day_outside: "text-gray-300 opacity-50",
-                }}
-              />
-            </div>
+            {/* middle big card */}
+            <div className="bg-white p-4 rounded-2xl shadow lg:col-span-3 h-full">
+              <div className="flex items-center justify-between font-semibold">
+                <h2 className="mb-2 text-md font-semibold text-blue-800">{t("InProg")}</h2>
+              </div>
 
-            {/* ROW 2 */}
-
-            {/* News - 1 column */}
-            <div className="bg-white p-6 rounded-2xl shadow">
-              <h2 className="font-semibold mb-4 text-sm">{t("News")}</h2>
-              <p className="text-gray-400 text-xs text-center">No recent news</p>
-            </div>
-
-            {/* Recent Projects - 1 column */}
-            <div className="bg-white p-6 rounded-2xl shadow">
-              <h2 className="font-semibold mb-4 text-sm">{t("RecentProjects")}</h2>
-              <p className="text-gray-400 text-xs text-center">
-                You weren't added to any project yet.
-              </p>
-            </div>
-
-            {/* Personal Notes - 1 column */}
-            <div className="bg-white p-6 rounded-2xl shadow">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="font-semibold text-sm">{t("Notes")}</h2>
-                <div className="flex gap-2">
-                  <button className="text-orange-500 hover:text-orange-600">✏️</button>
-                  <button className="text-orange-500 hover:text-orange-600 text-lg">+</button>
+              <div className="space-y-3 mt-3 text-sm text-black">
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">create the poster for xyz company</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">add fulan to the project</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="w-4 h-4" />
+                  <span className="flex-1">finish the xyz plan</span>
                 </div>
               </div>
-              <p className="text-gray-400 text-xs text-center">
-                Add your personal notes and reminders.
-              </p>
             </div>
 
-            {/* ROW 3 - Progress spans from row 2 to row 3 */}
-
-            {/* Empty spacers to maintain grid flow */}
-            <div className="lg:col-span-3 bg-white p-6 rounded-2xl shadow flex flex-col items-center justify-center">
-              {/* Circular Progress */}
-              <div className="relative w-28 h-28 mb-3">
-                <svg className="transform -rotate-90 w-28 h-28">
-                  <circle
-                    cx="56"
-                    cy="56"
-                    r="50"
-                    stroke="#e5e7eb"
-                    strokeWidth="8"
-                    fill="none"
-                  />
-                  <circle
-                    cx="56"
-                    cy="56"
-                    r="50"
-                    stroke="#f97316"
-                    strokeWidth="8"
-                    fill="none"
-                    strokeDasharray="314.16"
-                    strokeDashoffset="43.98"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-blue-900">86%</span>
-                </div>
-              </div>
-              
-              <h3 className="text-center font-semibold text-sm mb-1">
-                The coffee shop project
-              </h3>
-              <p className="text-xs text-gray-500">{t("Progress")}</p>
+            {/* Calendar card — parent wrapper provides max-height & scrolling */}
+            <div className="bg-white p-4 rounded-2xl shadow col-span-3 h-full">
+              <h2 className="mb-2 font-semibold text- text-emerald-600">{t("Done")}</h2>
+             
             </div>
+            </div>
+        
+           {/* middle row */}
+
+        <div className="grid gap-x-8 grid-cols-1 md:grid-cols-5 lg:grid-cols-9 text-primary1 text-sm font-serif items-start [&>*]:max-h-[250px] mt-4 " >
+
+            <div className="bg-white p-4 rounded-2xl shadow col-span-2">
+            </div>
+            <div className="bg-white p-4 rounded-2xl shadow col-span-3 h-full ">
+              <h2 className="mb-2 font-semibold">{t("Upcomingdead")}</h2>
+            </div>
+
+            <div className="bg-white p-4 rounded-2xl shadow col-span-4 h-full">
+              <h2 className="mb-2 font-semibold">{t("Activity")}</h2>
+            </div>
+
 
           </div>
         </main>
+        </div>
       </div>
-      
-    </div>
   );
 };
 
-export default Dashboard;
+export default ProjectsPage;

@@ -7,13 +7,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import DashboardPage from './pages/DashboardPage'
 import { useTranslation } from 'react-i18next'
 import CalendarPage from './pages/CalendarPage'
+import ProjectsPage from './pages/ProjectsPage'
+import MyProjects from './pages/MyProjects'
 // import adminDashboard from './pages/Admin/adminDashboard'
 // import managerDashboard from './pages/Manager/managerDashboard'
 // import ManageUsers from './pages/Admin/ManageUsers'
 // import createTask from './pages/Manager/createTask'
 // import manageProjects from './pages/Manager/manageProjects'
 // import manageTasks from './pages/Manager/manageTasks'
-//import Privateroute from './components/Privateroute'
+// import Privateroute from './components/Privateroute'
 
 const App = () => {
 
@@ -34,6 +36,8 @@ const App = () => {
         <Route path='/reset-password' element={<ResetPassword/>} />
         <Route path='/Dashboard' element={<DashboardPage/>} />
         <Route path='/CalendarPage' element={<CalendarPage/>} />
+        <Route path='/Projects/:projectId' element={<ProjectsPage />} />
+         <Route path='/Projects' element={<MyProjects />} />
 
         {/* Admin Routes */}
         {/* <Route element={<Privateroute allowedRoles={"admin"}/>}>
