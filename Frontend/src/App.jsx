@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import CalendarPage from './pages/CalendarPage'
 import ProjectsPage from './pages/ProjectsPage'
 import MyProjects from './pages/MyProjects'
+import ChatsPage from './pages/ChatsPage'
 // import adminDashboard from './pages/Admin/adminDashboard'
 // import managerDashboard from './pages/Manager/managerDashboard'
 // import ManageUsers from './pages/Admin/ManageUsers'
@@ -37,7 +38,8 @@ const App = () => {
         <Route path='/Dashboard' element={<DashboardPage/>} />
         <Route path='/CalendarPage' element={<CalendarPage/>} />
         <Route path='/Projects/:projectId' element={<ProjectsPage />} />
-         <Route path='/Projects' element={<MyProjects />} />
+        <Route path='/Projects' element={<MyProjects />} />
+        <Route path='/Chats' element={<ChatsPage />} />
 
         {/* Admin Routes */}
         {/* <Route element={<Privateroute allowedRoles={"admin"}/>}>
