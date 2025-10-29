@@ -86,11 +86,11 @@ const Dashboard = () => {
               [&>*]:max-h-[260px] => applies a max-height to all direct children (cards)
               [&>*]:overflow-y-auto => makes each card scroll internally when content overflows
               Adjust max-h value to taste (h-64 / h-72 etc). */}
-          <div className="grid gap-6 grid-cols-0 md:grid-cols-4 lg:grid-cols-9 text-primary1 text-sm font-serif items-start [&>*]:max-h-[300px] ">
+          <div className="grid gap-6 grid-cols-0 md:grid-cols-4 lg:grid-cols-9 text-primary1 text-xs font-serif items-start [&>*]:max-h-[300px] ">
             {/* left column cards */}
             <div className="flex flex-col md:col-span-1 lg:col-span-3 ">
               <div className="bg-white p-4 rounded-2xl shadow">
-                <div className="flex justify-center uppercase ">
+                <div className="flex justify-center font-semibold uppercase ">
                   {t("welcome")}, {userData ? userData.name : "Loading..."} ! 👋
                 </div>
               </div>
