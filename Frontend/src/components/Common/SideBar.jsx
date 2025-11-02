@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import { assets } from '../assets/assets'
+import { assets } from '../../assets/assets';
 import { useNavigate, useLocation } from 'react-router-dom'
 
 const SideBar = () => {
@@ -16,7 +16,7 @@ const SideBar = () => {
        
         {/* Logo */}
        <div className='w-10 my-6 flex justify-center'>
-         <img src={assets.blueLogo} alt="logo" />
+         <img onClick={() => navigate("/")} src={assets.blueLogo} alt="logo" />
        </div>
 
         {/* Dashboard */}

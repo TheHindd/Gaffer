@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import SideBar from "../components/SideBar";
-import NavBar from "../components/NavBar";
+import SideBar from "../components/Common/SideBar";
+import NavBar from "../components/Common/NavBar";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from '../context/AppContext';
 import CalendarCard from "../components/Calender"; // keep your existing path

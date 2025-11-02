@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
-import NavBar from '../components/NavBar'
+import SideBar from '../components/Common/SideBar'
+import NavBar from '../components/Common/NavBar'
 import { useState, useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
