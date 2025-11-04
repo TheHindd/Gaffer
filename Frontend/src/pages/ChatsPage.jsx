@@ -4,7 +4,7 @@ import NavBar from '../components/Common/NavBar'
 
 const ChatsPage = () => {
   return (
-    <div>
+    <div className="flex min-h-screen bg-background">
       <SideBar/>
        <NavBar />
     </div>

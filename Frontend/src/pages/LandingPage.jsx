@@ -1,5 +1,5 @@
 import React from "react"
-import NavBar from "../components/LandingNavBar"
+import NavBar from "../components/LandingPageComponents/LandingNavBar"
 import { useTranslation } from "react-i18next"
 
 const LandingPage = () => {

@@ -32,7 +32,7 @@ const NavBarLanding = () => {
         className="bg-gray-200 rounded mr-4 ml-4 px-3 py-2 text-sm hover:bg-gray-400 transition-all">
         {i18n.language === "en" ? "AR" : "EN"}
       </button>
-      <button onClick={() => navigate("/Login")} className='flex justify-center bg-secondary1 rounded-xl py-2 w-32 text-white text-sm hover:bg-blue-500 transition-all'>{t("login")}</button>
+      <button onClick={() => navigate("/login")} className='flex justify-center bg-secondary1 rounded-xl py-2 w-32 text-white text-sm hover:bg-blue-500 transition-all'>{t("login")}</button>
       </div>
         
     </div>

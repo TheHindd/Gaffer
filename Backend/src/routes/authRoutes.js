@@ -12,6 +12,6 @@ authRouter.post('/resetpassword', resetPassword );
 authRouter.post('/forgotpassword', forgotPassword);
 authRouter.put('/firstloginpasswordreset', changePassword);
 authRouter.get('/data', authenticateMiddle, getuserData);
-authRouter.post('/refreshToker',authenticateMiddle ,refreshToken);
+authRouter.post('/refreshToken',authenticateMiddle ,refreshToken);
 
 export default authRouter;

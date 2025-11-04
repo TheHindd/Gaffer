@@ -5,7 +5,7 @@ import SideBar from '../components/Common/SideBar';
 
 const CalendarPage = () => {
   return (
-    <div >
+    <div className="flex min-h-screen bg-background">
        <SideBar/>
        <NavBar /> 
     </div>

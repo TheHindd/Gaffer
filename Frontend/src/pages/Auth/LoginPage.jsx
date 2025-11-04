@@ -54,8 +54,8 @@ const Login = () => {
       >
         {i18n.language === "en" ? "AR" : "EN"}
       </button> </div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="black" class="size-7 absolute center bottom-8 cursor-pointer" onClick={()=> navigate('/')}>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.4" stroke="black" className="size-7 absolute center bottom-8 cursor-pointer" onClick={()=> navigate('/')}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
         </svg>  
        <div className="flex bg-white rounded-3xl shadow-lg animate-fadeInUp overflow-hidden max-w-3xl w-250 h-120">
            <div className="flex items-center justify-center p-8 bg-white w-3/5">
@@ -80,7 +80,7 @@ const Login = () => {
               </div>
               <div className="flex items-center mb-4 border-b border-stone-200 ">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="grey" className="size-4">
-                      <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+                      <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
                 </svg>
                   <input onChange={e => setPassword(e.target.value)}
                   value={password}
