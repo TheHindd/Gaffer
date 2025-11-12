@@ -2,31 +2,25 @@ import React from "react";
 
 const Navbar = () =>  {
   return (
-    <div className="flex justify-around items-center m-7" role="banner">
-        
-          <div className="flex">
+    <div className="container" >
+        <header>
             <img src="/whiteLogo.png" alt="Gaffer Logo" className="w-30" />
-          </div>
 
-          <div className="flex gap-6 justify-center text-sm font-semibold " role="menubar" aria-label="Primary">
-            <a role="menuitem" href="#home">Home</a>
-            <a role="menuitem" href="#about">About Us</a>
-            <a role="menuitem" href="#work">Our Work</a>
+          <nav className="flex gap-6 justify-center text-sm font-semibold " role="menubar" aria-label="Primary">
+            <a href="#home">Home</a>
+            <a  href="#about">About Us</a>
+            <a  href="#work">Our Work</a>
             <a role="menuitem" href="#services">Our Services</a>
-          </div>
+          </nav>
           
-
-          {/* Right: language toggle */}
-          <div className="flex" >
-            <button
-              type="button"
-              className="lang-toggle"
+            <button className="nav-button"
+              type="nav-button"
               aria-label="Switch language to Arabic"
             >
               العربية
             </button>
-          </div>
     
+        </header>
     </div>
   );
 }

@@ -3,8 +3,10 @@ import React from 'react';
 const Hero = () => {
   return (
     <div className="hero-section">
-      <img src="/background.jpg" alt="hero background" className="hero-bg bottom-[-3em]" />
-  
+      <img src="/background.jpg" alt="hero background" className="hero-bg" />
+      <div className="spotlight" id="spotlight" />
+      <div class="vignette"></div>
+
 
       {/* text overlay inside the hero */}
       <div className="hero-inner container">

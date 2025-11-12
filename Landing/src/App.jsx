@@ -6,11 +6,7 @@ import "./index.css";
 function App() {
   return (
     <div className="page relative overflow-hidden">
-      {/* Decorative background layers */}
-      <div className="bg bg-1" />
-      <div className="bg bg-2" />
-      <div className="bg bg-3" />
-      <div className="noise" />
+
 
       <div className="w-full h-full">
         <Navbar />
@@ -18,6 +14,7 @@ function App() {
         {/* Hero Section */}
         <main className="hero relative">
           <Hero />
+          
         </main>
       </div>
     </div>
