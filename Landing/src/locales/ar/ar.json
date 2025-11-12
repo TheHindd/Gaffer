@@ -1,0 +1,31 @@
+{
+  "welcome": "مرحبـاً بعودتك ",
+  "login": "تسجيل الدخول",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "rememberMe": "تذكرني",
+  "forgotPassword": " نسيت كلمة المرور؟",
+  "dashboard": "لوحة التحكم",
+  "projects": "المشاريع",
+ 
+  "Home": "الرئيسية",
+  "AboutUs": "من نحن",
+  "OurServices": "خدماتنا",
+  "OurWork": "أعمالنا",  
+  "ContactUs": "تواصل معنا",
+
+  "HomePage": "الرئيسية",
+  "Calendar": "التقويم",
+  "UpcomingTasks":"المهام القادمة",
+  "RecentProjects": "المشاريع الحالية",
+  "Notes":"ملاحظات شحصية",
+  "Progress":"نسبة التقدم",
+  "News": "الأخبار",
+
+  "ToDo":"مهام مسنــدة", 
+  "InProg":"قيـد التنفيــذ",
+  "Done": "مكتـمـل",
+  "Activity":"سجل العمليـات",
+  "Upcomingdead":"مواعيــد قريـبة"
+
+}

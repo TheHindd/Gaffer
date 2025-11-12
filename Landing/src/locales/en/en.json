@@ -1,0 +1,30 @@
+{
+  "welcome": "Welcome Back",
+  "login": "Log in",
+  "email": "Email",
+  "password": "Password",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot password?",
+  "dashboard": "Dashboard",
+  "projects": "Projects",
+  
+  "Home": "Home",
+  "AboutUs": "About Us",
+  "OurServices": "Our Services",
+  "OurWork": "Our Work",  
+  "ContactUs": "Contact Us" ,
+  
+  "HomePage": "Home Page",
+  "Calendar": "Calendar",
+  "UpcomingTasks":"Upcoming Tasks ",
+  "RecentProjects": "Recent Projects",
+  "Notes":"Personal Notes",
+  "Progress":"Progress",
+  "News": "News",
+  
+  "ToDo":"To Do", 
+  "InProg":"In Progress",
+  "Done": "Done",
+  "Activity":" Activity Log",
+  "Upcomingdead":" Upcoming Deadlines"
+}
