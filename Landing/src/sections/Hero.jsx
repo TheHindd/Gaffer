@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
 
 const Hero = () => {
+
+// const spotlight = document.querySelector(".spotlight");
+// window.addEventListener("mousemove", e => {
+//   const xPercent = 70 + (e.clientX / window.innerWidth ) * 20; 
+//   const yPercent = 78 + (e.clientY / window.innerHeight ) * 16;
+
+//   gsap.to(spotlight, {
+//     "--spot-x": `${xPercent}%`,
+//     "--spot-y": `${yPercent}%`,
+//     duration: 0.6,
+//     ease: "power2.out"
+//   });
+// });
+
+const hero = document.querySelector(".hero");
+
+window.addEventListener("mousemove", e => {
+  const x =  (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
+
+  hero.style.setProperty("--cursor-x", `${x}%`);
+  hero.style.setProperty("--cursor-y", `${y}%`);
+  duration: 0.7;
+
+});
+
+
+
   return (
     <div className="hero-section">
       <img src="/background.jpg" alt="hero background" className="hero-bg" />
