@@ -3,18 +3,16 @@ import gsap from 'gsap';
 
 const Hero = () => {
 
-// const spotlight = document.querySelector(".spotlight");
-// window.addEventListener("mousemove", e => {
-//   const xPercent = 70 + (e.clientX / window.innerWidth ) * 20; 
-//   const yPercent = 78 + (e.clientY / window.innerHeight ) * 16;
 
-//   gsap.to(spotlight, {
-//     "--spot-x": `${xPercent}%`,
-//     "--spot-y": `${yPercent}%`,
-//     duration: 0.6,
-//     ease: "power2.out"
-//   });
-// });
+window.addEventListener("load", () => {
+  gsap.fromTo(".spotlight",
+    { "--spot-w": "0vw", "--spot-h": "0vh" }, // start tiny
+    { "--spot-w": "40vw", "--spot-h": "18vh", // final beam size
+      duration: 2.5,
+      ease: "power3.out"
+    }
+  );
+});
 
 const hero = document.querySelector(".hero");
 
@@ -24,7 +22,7 @@ window.addEventListener("mousemove", e => {
 
   hero.style.setProperty("--cursor-x", `${x}%`);
   hero.style.setProperty("--cursor-y", `${y}%`);
-  duration: 0.7;
+  duration: 0.6;
 
 });
 
@@ -32,10 +30,25 @@ window.addEventListener("mousemove", e => {
 
   return (
     <div className="hero-section">
+      
       <img src="/background.jpg" alt="hero background" className="hero-bg" />
       <div className="spotlight" id="spotlight" />
+     
       <div class="vignette"></div>
 
+       {/* Animated SVG blob background */}
+      <svg className="hero-blob" viewBox="0 0 800 600" preserveAspectRatio="none">
+        <path fill="#ffffffff" d="M0,0 C200,100 600,100 800,0 L800,600 L0,600 Z">
+     <animate attributeName="d" dur="4s" repeatCount="indefinite"
+  values="
+    M0,0 C300,200 500,0 800,0 L800,600 L0,600 Z;
+    M0,0 C250,300 550,-50 800,0 L800,600 L0,600 Z;
+    M0,0 C300,200 500,0 800,0 L800,600 L0,600 Z
+  " />
+        </path>
+      </svg>
+   
+  
 
       {/* text overlay inside the hero */}
       <div className="hero-inner container">

@@ -4,7 +4,7 @@ const Navbar = () =>  {
   return (
     <div className="container" >
         <header>
-            <img src="/whiteLogo.png" alt="Gaffer Logo" className="w-30" />
+            <img src="/blueLogo.png" alt="Gaffer Logo" className="w-15" />
 
           <nav className="flex gap-6 justify-center text-sm font-semibold " role="menubar" aria-label="Primary">
             <a href="#home">Home</a>
