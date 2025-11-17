@@ -2,7 +2,7 @@
 @import "tailwindcss"; 
 
 :root {
-  --bg: #e7e7e7;
+  --bg: #ffffff;
   --text: #2C459C;
   --muted: #F0706C;
   --cta:  #f58985;
@@ -45,16 +45,15 @@ nav {
   gap: 3rem;
   margin-left: -5%;
   
-  
 }
 
 nav a {
-  font-size: 0.8rem;
+  font-size: 14px;
   color: var(--text);
   transition: color 200ms ease;
-  font-weight: 500;
+  font-weight: bold;
   text-decoration: none;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.07rem;
   
 }
 
@@ -83,34 +82,22 @@ nav a:hover {
 .hero-section {
   position: relative;
   width: 100%;
-  height: 120vh;
+  height: 95vh;
   overflow: hidden;
 }
 
 .hero-bg {
-  position: abdsolute;
-  inset:0 px;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   z-index: 0;
-  opacity: 100; /* tweak if you want stronger/dimmer background */
-  
+  opacity: 1;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle 20vw at var(--cursor-x, 50%) var(--cursor-y, 50%),
-    rgba(255,255,200,0.4) 0%,
-    rgba(255,255,200,0.2) 20%,
-    transparent 40%
-  );
-  mix-blend-mode: screen; /* blends with background */
-  pointer-events: none;
-}
+
 .hero::after {
   content: "";
   position: absolute;
@@ -126,10 +113,34 @@ nav a:hover {
 
 }
 
+.hero-inner { 
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  max-width: 860px;
+  color: white;
+  text-align: left;
+  z-index: 2; /* ensures it’s above the spotlight */
+}
+
+.hero-blob {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px; /* or more if needed */
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+
+/* Spotlight stage effect */
 
 .spotlight-stage {
   content:"";
-  position:absolute;
+  position: absolute;
   inset:0;
   /* use variables for gradient center */
   background: radial-gradient(30vw 20vh at var(--spot-x, 70%) var(--spot-y, 70%),
@@ -142,7 +153,7 @@ nav a:hover {
 
 .spotlight::after {
   content:"";
-  position:absolute;
+  position: absolute;
   width:1200px;   /* give it a box */
   height:900px;
   left:-25%;
@@ -168,34 +179,20 @@ nav a:hover {
 }
 
 
-.hero-inner { 
-  position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translateY(-50%);
-  max-width: 860px;
-  color: white;
-  text-align: left;
-  z-index: 2; /* ensures it’s above the spotlight */
+
+/*Stats*/
+
+
+
+.stats{
+
+  
 }
-
-.hero-blob {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 140px; /* or more if needed */
-  z-index: 0;
-  pointer-events: none;
-  opacity: 90;
-}
-
-
-
 .headline {
-  font-size: clamp(36px, 6vw, 64px);
+  font-size: clamp(20px, 6vw, 40px);
   line-height: 1.06;
-  letter-spacing: -0.6px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.6px;
   margin: 0 0 18px;
   font-weight: 800;
 }
@@ -227,41 +224,7 @@ nav a:hover {
 }
 .cta:active { transform: translateY(0); }
 
-/*image gradient*/
-.image-gradient {
-  position: absolute;
-  opacity: 0.5;
-  z-index: -1;
-}
 
-  
-/* Spotlight effect */
-
-.spotlight-beam {
-  position: absolute;
-  top: -9%;
-  left: -5%;
-  width: 50%;
-  height: 50%;
-  background: radial-gradient(
-      ellipse at top left,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0.1) 40%,
-      rgba(255, 255, 255, 0.02) 70%,
-      transparent 100%
-    ),
-    linear-gradient(
-      75deg,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 100%
-    );
-  transform: rotate(-20deg) skewX(-15deg);
-  mix-blend-mode: screen;
-  filter: blur(25px);
-  opacity: 0.6;
-  pointer-events: none;
-}
 
 
 

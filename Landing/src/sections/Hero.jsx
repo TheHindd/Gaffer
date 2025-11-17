@@ -37,14 +37,15 @@ window.addEventListener("mousemove", e => {
       <div class="vignette"></div>
 
        {/* Animated SVG blob background */}
-      <svg className="hero-blob" viewBox="0 0 800 600" preserveAspectRatio="none">
-        <path fill="#ffffffff" d="M0,0 C200,100 600,100 800,0 L800,600 L0,600 Z">
-     <animate attributeName="d" dur="4s" repeatCount="indefinite"
-  values="
-    M0,0 C300,200 500,0 800,0 L800,600 L0,600 Z;
-    M0,0 C250,300 550,-50 800,0 L800,600 L0,600 Z;
-    M0,0 C300,200 500,0 800,0 L800,600 L0,600 Z
-  " />
+    <svg className="hero-blob" viewBox="0 0 800 600" preserveAspectRatio="none">
+        <path fill="#fff" d="M0,0 C250,700 500,50 800,0 L800,600 L0,600 Z">
+          <animate attributeName="d" dur="10s" repeatCount="indefinite"
+          values="
+            M0,0 C350,800 400,50 900,0 L900,700 L0,700 Z;
+            M0,0 C400,600 400,25 900,0 L900,700 L0,700 Z;
+            M0,0 C300,450 400,50 900,0 L900,700 L0,700 Z;
+            M0,0 C350,800 400,25 900,0 L900,700 L0,700 Z
+          " />
         </path>
       </svg>
    
@@ -52,12 +53,14 @@ window.addEventListener("mousemove", e => {
 
       {/* text overlay inside the hero */}
       <div className="hero-inner container">
-        <h4 className="headline">
-          المحتوى هو <span className="text-[#F0706C]">الملك</span>
+        <h4 className="headline" >
+         <p>.امتلك الأضواء</p>
+         <p dir="rtl" >سيطر على <span dir="rtl" className="text-[#F0706C]">
+          المسرح.</span></p>
         </h4>
-        <h1 className="headline">Content</h1>
+        <h1 className="headline">Own The Spotlight. </h1>
         <h1 className="headline">
-          is <span className="text-[#F0706C]">KING</span>
+          Command The <span className="text-[#F0706C]">Stage.</span>
         </h1>
         <button className="cta">Contact Us</button>
       </div>
