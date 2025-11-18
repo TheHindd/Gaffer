@@ -50,10 +50,11 @@ nav {
 nav a {
   font-size: 14px;
   color: var(--text);
-  transition: color 200ms ease;
+  transition: color 180ms ease;
   font-weight: bold;
   text-decoration: none;
   letter-spacing: 0.07rem;
+  text-transform: uppercase;
   
 }
 
