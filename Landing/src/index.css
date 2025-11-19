@@ -32,28 +32,27 @@ body {
 
 /* Navigation */
 header {
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5rem;
-  z-index: 999;
-  
+  padding: 1rem 0; /* keep container padding for sides */
+  font-family: serif;
+  background: transparent;
 }
 nav {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  margin-left: -5%;
-  
+  gap: 2rem; /* smaller gap to avoid overflow */
 }
 
 nav a {
-  font-size: 14px;
-  color: var(--text);
+  font-size: 13px;
+  color: white;
   transition: color 180ms ease;
-  font-weight: bold;
+  font-weight: bolder;
   text-decoration: none;
-  letter-spacing: 0.07rem;
   text-transform: uppercase;
   
 }
@@ -62,17 +61,7 @@ nav a:hover {
  color: var(--muted);
 }
 
-.nav-button{
-  
-  color: var(--text);
-  padding: 0.5rem 1.2rem;
-  border-radius: 50px;
-  border: #a7a7a7 1.5px solid;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  
-}
+
 
 .nav-button:hover{
  box-shadow: grey 0px 0px 5px 0px;
@@ -83,7 +72,7 @@ nav a:hover {
 .hero-section {
   position: relative;
   width: 100%;
-  height: 95vh;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -95,34 +84,17 @@ nav a:hover {
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  opacity: 1;
 }
 
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle 12vw at var(--cursor-x, 100%) var(--cursor-y, 100%),
-    rgba(255,240,200,0.6) 0%,
-    rgba(255,200,160,0.3) 5%,
-    transparent 75%
-  );
-  mix-blend-mode: screen; /* blends with background */
-  filter: blur(30px) contrast(.3) saturate(0.9);
-
-}
-
-.hero-inner { 
-  position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translateY(-50%);
+.hero-inner {
+  position: relative;
+  margin: 0 auto;
+  padding: 4rem 2rem;
   max-width: 860px;
   color: white;
-  text-align: left;
-  z-index: 2; /* ensures it’s above the spotlight */
+  text-align: center; /* or left if you prefer */
+  z-index: 2;
 }
 
 .hero-blob {
@@ -130,26 +102,34 @@ nav a:hover {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 120px; /* or more if needed */
+  height: 120px;
   z-index: 0;
   pointer-events: none;
   opacity: 1;
+  z-index: 10;
 }
 
 
 /* Spotlight stage effect */
 
-.spotlight-stage {
-  content:"";
+.cursor{
   position: absolute;
-  inset:0;
-  /* use variables for gradient center */
-  background: radial-gradient(30vw 20vh at var(--spot-x, 70%) var(--spot-y, 70%),
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  --spot-w: 10px;
+  --spot-h: 10px;
+  --spot-x: 20%;
+  --spot-y: 20%;
+   background: radial-gradient(
+    circle 12vw at var(--cursor-x, 100%) var(--cursor-y, 100%),
     rgba(255,240,200,0.6) 0%,
     rgba(255,200,160,0.3) 5%,
-    transparent 65%);
-  mix-blend-mode: screen;
-  filter: blur(16px) contrast(0.8) saturate(1.5);
+    transparent 75%
+  );
+  mix-blend-mode: screen; /* blends with background */
+  filter: blur(30px) contrast(.3) saturate(0.9);
+  transition: filter 120ms linear;
 }
 
 .spotlight::after {
@@ -170,13 +150,14 @@ nav a:hover {
   transition: filter .18s ease;
 
 }
-.vintage {
+.vignette {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(70% 60% at 50% 50%, transparent 46%, rgba(0,0,0,0.35));
   mix-blend-mode: multiply;
   pointer-events: none;
+  z-index: 2;
 }
 
 
@@ -200,8 +181,8 @@ nav a:hover {
 .subcopy {
   font-size: clamp(16px, 2.2vw, 20px);
   line-height: 1.6;
-  color: var(--muted);
-  margin: 0 0 32px;
+  color: white;
+  margin: 0 300px 32px;
   max-width: 700px;
 }
 .cta {
@@ -242,9 +223,9 @@ nav a:hover {
 
 /* Responsive tweaks */
 @media (max-width: 980px) {
-  .nav { gap: 16px; }
   .nav-list { gap: 14px 18px; }
-  .hero { padding: 80px 0 100px; }
+  .hero-inner { padding: 2.5rem 1rem; }
+  nav { gap: 1rem; }
   .subcopy { max-width: 100%; }
 }
 
