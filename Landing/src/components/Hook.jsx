@@ -35,13 +35,17 @@ const Hook = () => {
   return (
     <div
       ref={sectionRef}
-      className="flex flex-row justify-center items-center gap-6 py-20"
+      className="flex grid grid-flow-row grid-cols-9 justify-center items-center py-10 "
     >
-      <img src="/MovieElements3.png" alt="hook" className="size-35" />
+      <img src="/MovieElements3.png" alt="hook" className="size-30 col-start-4 col-end-5 row-start-2"  />
 
-      <h1 className="text-4xl font-bold">
+      <h1 className="text-3xl font-bold col-start-5 col-end-9 row-start-2">
         Gaffer. Camera. Action.
       </h1>
+
+      {/* <p className="text-sm text-red-400 font-semibold col-start-3 col-end-8 row-start-1 mb-8"> we give you the light you need</p>
+      <p className="text-sm text-red-400 font-semibold col-start-8 col-end-10 row-start-3 " > so you can take the action</p>
+    > */}
     </div>
   );
 };
